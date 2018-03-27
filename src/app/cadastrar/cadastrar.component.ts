@@ -24,7 +24,7 @@ export class CadastrarComponent implements OnInit {
     this.itemsCollection = this.db.collection<Ponto>('items');
 
     this.cpFormGroup = new FormGroup({
-      titulo: new FormControl('', [Validators.required]),
+      titulo: new FormControl('', [Validators.minLength(5),Validators.required]),
       uid: new FormControl('')
     });
   }
