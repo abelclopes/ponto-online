@@ -1,13 +1,18 @@
 <div>
   <div class="container">
-    <h1>Hero Form</h1>
-    <form [formGroup]="heroForm" (ngSubmit)="onSubmit()">
-      <div class="form-group">
-        <label for="name">Titulo</label>
-        <input type="text" class="form-control" formControlName="titulo" placeholder="titulo" required>
+    <h1>Cadastro</h1>
+    <form [formGroup]="cpFormGroup" novalidate  >
+      <div class="col-sm-6 col-xs-6">
+        <input formControlName="uid" type="hidden" />
+        <div class="col-sm-6 col-xs-12">
+          <mt-input-container errorMessage="Campo obrigatório e com 5 caracteres" label="Titulo">
+            <input class="form-control" formControlName="titulo" placeholder="Titulo" autocomplete="off">
+          </mt-input-container>
+        </div>   
       </div>
-      <button type="submit" class="btn btn-success" (click)="addNovo()">Submit</button>
-
+      <div class="col-sm-12 col-xs-12">
+        <button type="submit" class="btn btn-success" (click)="addNovo()">Submit</button>
+      </div>
     </form>
-</div>
+  </div>
 </div>

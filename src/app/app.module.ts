@@ -13,6 +13,8 @@ import { environment } from '../environments/environment';
 import { CadastrarComponent } from './cadastrar/cadastrar.component';
 import { FormsModule } from '@angular/forms';
 
+import {SharedModule} from './shared/shared.module';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -20,13 +22,15 @@ import { FormsModule } from '@angular/forms';
     HeaderComponent,
     HomeComponent,
     CadastrarComponent,
-    FormsModule
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    FormsModule,
+    SharedModule.forRoot(),
 
   ],
   providers: [],

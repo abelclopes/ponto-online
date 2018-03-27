@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
@@ -14,19 +14,22 @@ export class CadastrarComponent implements OnInit {
   private itemsCollection: AngularFirestoreCollection<Ponto>;
   tasks$: Observable<Ponto[]>;
 
-  forPontom: FormGroup;
-  constructor(private formGroup: FormGroup, private db: AngularFirestore) {
-   this.forPontom = new FormGroup ({
-      titulo: new FormControl('', Validators.minLength(2)),
-    });
+  cpFormGroup: FormGroup;
+
+  constructor(private db: AngularFirestore) {
   }
 
   ngOnInit() {
     const itemsRef = this.db.collection<Ponto>('items');
     this.itemsCollection = this.db.collection<Ponto>('items');
+
+    this.cpFormGroup = new FormGroup({
+      titulo: new FormControl('', [Validators.required]),
+      uid: new FormControl('')
+    });
   }
   onSubmit(): void {
-    console.log(this.forPontom.value);
+    console.log(this.cpFormGroup.value);
   }
 
   addItem(ponto: Ponto) {
